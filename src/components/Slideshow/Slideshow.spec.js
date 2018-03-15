@@ -3,7 +3,7 @@ import React from 'react';
 import {shallow} from 'enzyme';
 import sinon from 'sinon';
 import {expect} from 'chai';
-import Image from './Image.js';
+import Slideshow from './Slideshow.js';
 
 describe('Image', () => {
 
