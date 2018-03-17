@@ -25,7 +25,7 @@ class Image extends React.Component {
     return `https://farm${dto.farm}.staticflickr.com/${dto.server}/${dto.id}_${dto.secret}.jpg`;
   }
 
-  rotate_Click = () => {
+  rotate_Click ()  {
     var rotateEdit = this.state.rotate;
     rotateEdit = rotateEdit + 90;
         this.setState({
@@ -50,9 +50,9 @@ class Image extends React.Component {
         style={{
           transform: 'rotate(-'+this.state.rotate + 'deg)'
         }}>
-          <FontAwesome className="image-icon" name="sync-alt" title="rotate" onClick={this.rotate_Click}/>
-          <FontAwesome className="image-icon" name="trash-alt" title="delete" onClick={() => this.props.deleteClick(this.props.imageIndex)}/>
-          <FontAwesome className="image-icon" name="expand" title="expand" onClick={() => this.props.largeClick(this.props.imageIndex)}/>
+          <FontAwesome className="image-icon rotateButton" id="rotateButton" name="sync-alt" title="rotate" onClick={() => this.rotate_Click()}/>
+          <FontAwesome className="image-icon deleteButton" id="deleteButton" name="trash-alt" title="delete" onClick={() => this.props.deleteClick(this.props.imageIndex)}/>
+          <FontAwesome className="image-icon expandButton" id="expandButton" name="expand" title="expand" onClick={() => this.props.largeClick(this.props.imageIndex)}/>
         </div>
       </div>
     );

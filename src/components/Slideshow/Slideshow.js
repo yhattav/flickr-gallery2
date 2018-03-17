@@ -26,14 +26,17 @@ class Slideshow extends React.Component {
       rotate: 0,
       isLarge: false,
       slideWidth: 0,
-      slideHeight: 0
+      slideHeight: 0,
+      imageSource: ''
     };
     this.calcSlideSize = this.calcSlideSize.bind(this);
   }
 
 
-  urlFromDto(dto) {
-    return `https://farm${dto.farm}.staticflickr.com/${dto.server}/${dto.id}_${dto.secret}_b.jpg`;
+  urlFromSizes() {
+    var largeIndex = this.state.sizes.map(function(e) { return e.label; }).indexOf('Large');
+    if (largeIndex == -1) return this.state.sizes[this.state.sizes.length-1].source;
+    else return this.state.sizes[largeIndex].source;
   }
 
   calcSlideSize(sizes){
@@ -55,7 +58,7 @@ class Slideshow extends React.Component {
       }
       this.setState({
         slideWidth,
-        slideHeight
+        slideHeight,
       });
 }
 
@@ -101,7 +104,7 @@ getSizes(dto) {
           <div className="slideshow-background">
                 <div className="slide"
                   style={{
-                    backgroundImage: `url(${this.urlFromDto(this.props.dto)})`,
+                    backgroundImage: `url(${this.urlFromSizes()})`,
                     width: this.state.slideWidth + 'px',
                     height: this.state.slideHeight + 'px',
                     top: ((this.props.galleryHeight-this.state.slideHeight)/2)+ 'px',

@@ -36,11 +36,11 @@ describe('Gallery', () => {
 
   const mountGallery = () => {
     return shallow(
-      <Gallery tag='test1' />,
+      <Gallery tag='test2' />,
       {lifecycleExperimental: true, attachTo: document.createElement('div')}
     );
   };
-  
+
   beforeEach(() => {
     wrapper = mount(
       <Gallery/>,
