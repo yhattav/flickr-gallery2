@@ -17,7 +17,7 @@ describe('Slideshow', () => {
   const sampleImage = {id: '567229075', owner: '59717246@N05', secret: '2cf8456f01', server: '1103', farm: 2};
 
    let wrapperSlide;
-   const galleryWidth = 1920;
+   const galleryWidth = 1000;
    const galleryHeight = 1080;
 
    const mountSlideshow = () => {
@@ -40,29 +40,45 @@ describe('Slideshow', () => {
     expect(wrapperSlide).to.not.be.undefined;
   });
 
-it('gets sizes for the image', done => {
-    // moxios.install();
-    // moxios.wait(() => {
-    //   const request = moxios.requests.mostRecent();
-    //   request.respondWith({
-    //     status: 200,
-    //     response: {
-    //       sizes: {
-    //         size: sampleSizes
-    //       }
-    //     }
-    //   }).then(() => {
-    //     //console.log(sampleSizes.length)
-    //     //expect(wrapperSlide.state().sizes.length); // why does it say undefined to equal 'test4'? test4 is in the app.js test ...cant find explanation
-    //     //done();
-    //     moxios.uninstall();
-    //   });
-    // });
-    // wrapperSlide = mount(
-    //   <Slideshow dto={sampleImage} large={false} galleryWidth={galleryWidth} galleryHeight={galleryHeight}/>,
-    //   {attachTo: document.createElement('div')}
-    // );
+  it('finds the large size url for a picture', () => {
+    wrapperSlide = mountSlideshow();
+    wrapperSlide.state().sizes = sampleSizes;
+    var url = wrapperSlide.instance().urlFromSizes();
+    expect(url).to.eq('http://farm2.staticflickr.com/1103/567229075_2cf8456f01_b.jpg');
   });
+
+  it('keeps the aspect ratio of images like in the original(largest) even when the window ratio is different', () => {
+    wrapperSlide = mountSlideshow();
+    wrapperSlide.state().sizes = sampleSizes;
+    var url = wrapperSlide.instance().urlFromSizes();
+    wrapperSlide.instance().calcSlideSize(sampleSizes);
+    expect(768 / 1024).to.eq(wrapperSlide.state().slideHeight / wrapperSlide.state().slideWidth);
+  });
+
+  
+// it('gets sizes for the image', done => {// why does it say undefined to equal 'test4'? test4 is in the app.js test ...cant find explanation
+//     // moxios.install();
+//     // moxios.wait(() => {
+//     //   const request = moxios.requests.mostRecent();
+//     //   request.respondWith({
+//     //     status: 200,
+//     //     response: {
+//     //       sizes: {
+//     //         size: sampleSizes
+//     //       }
+//     //     }
+//     //   }).then(() => {
+//     //     //console.log(sampleSizes.length)
+//     //     //expect(wrapperSlide.state().sizes.length); 
+//     //     //done();
+//     //     moxios.uninstall();
+//     //   });
+//     // });
+//     // wrapperSlide = mount(
+//     //   <Slideshow dto={sampleImage} large={false} galleryWidth={galleryWidth} galleryHeight={galleryHeight}/>,
+//     //   {attachTo: document.createElement('div')}
+//     // );
+//   });
   // it('render 3 icons on each image', () => {
   //   expect(wrapper.find('FontAwesome').length).to.equal(3);
   // });
