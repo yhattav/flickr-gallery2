@@ -1,4 +1,3 @@
-// import 'jsdom-global/register';
 import React from 'react';
 import {shallow} from 'enzyme';
 import sinon from 'sinon';
@@ -27,16 +26,5 @@ describe('Image', () => {
     expect(wrapper.find('FontAwesome').length).to.equal(3);
   });
 
-  it('calc image size on mount', () => {
-    const spy = sinon.spy(Image.prototype, 'calcImageSize');
-    wrapper = mountImage();
-    expect(spy.called).to.be.true;
-  });
-
-  it('calculate image size correctly', () => {
-    const imageSize = wrapper.state().size;
-    const remainder = galleryWidth % imageSize;
-    expect(remainder).to.be.lessThan(1);
-  });
 
 });
