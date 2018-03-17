@@ -5,38 +5,41 @@ import sinon from 'sinon';
 import {expect} from 'chai';
 import Backtop from './Backtop.js';
 
-// describe('Image', () => {
+ describe('Backtop', () => {
 
-//   const sampleImage = {id: '28420720169', owner: '59717246@N05', secret: 'd460443ecb', server: '4722', farm: 5};
-
-//   let wrapper;
+   let wrapper;
 //   const galleryWidth = 1111;
 
-//   const mountImage = () => {
-//     return shallow(
-//       <Image dto={sampleImage} galleryWidth={galleryWidth}/>,
-//       {lifecycleExperimental: true, attachTo: document.createElement('div')}
-//     );
-//   };
+   const mountBacktop = () => {
+     
+     return shallow(
+       <Backtop />,
+       {lifecycleExperimental: true, attachTo: document.createElement('div')}
+     );
+   };
 
-//   beforeEach(() => {
-//     wrapper = mountImage();
-//   });
+//    beforeEach(() => {
+//      wrapper = mountBacktop();
+//    });
 
-//   it('render 3 icons on each image', () => {
-//     expect(wrapper.find('FontAwesome').length).to.equal(3);
-//   });
+   it('renders', () => {
+    wrapper = mountBacktop();
+    expect(wrapper).to.not.be.undefined;
+  });
 
-//   it('calc image size on mount', () => {
-//     const spy = sinon.spy(Image.prototype, 'calcImageSize');
-//     wrapper = mountImage();
-//     expect(spy.called).to.be.true;
-//   });
 
-//   it('calculate image size correctly', () => {
-//     const imageSize = wrapper.state().size;
-//     const remainder = galleryWidth % imageSize;
-//     expect(remainder).to.be.lessThan(1);
-//   });
+   it('render 1 arrow icon', () => {
+    wrapper = mountBacktop();
+     expect(wrapper.find('.arrow-up').length).to.equal(1);
+   });
 
-// });
+    // it("simulates click event for getting back to top", () => {   // cant call handletopclick without its internals - and i cant test those? works if i remove them from within the method
+    // const spy = sinon.spy(Backtop.prototype, 'handleTopClick');
+    // wrapper.find("div").simulate('click');
+    // expect(spy.called).to.be.true;
+    // spy.restore();
+    // });
+
+
+
+ });

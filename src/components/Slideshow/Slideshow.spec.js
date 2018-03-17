@@ -22,17 +22,22 @@ describe('Slideshow', () => {
 
    const mountSlideshow = () => {
      return shallow(
-       <Slideshow dto={sampleImage} large={false} galleryWidth={galleryWidth} galleryHeight={galleryHeight}/>,
+       <Slideshow dto={sampleImage} large={true} galleryWidth={galleryWidth} galleryHeight={galleryHeight} imageIndexInImages={3}/>,
        {lifecycleExperimental: true, attachTo: document.createElement('div')}
      );
    };
-
+   const mountFirstSlideshow = () => {
+     return shallow(
+       <Slideshow dto={sampleImage} large={true} galleryWidth={galleryWidth} galleryHeight={galleryHeight} imageIndexInImages={0}/>,
+       {lifecycleExperimental: true, attachTo: document.createElement('div')}
+     );
+   };
   //  beforeEach(() => {
   //    wrapper = mountSlideshow();
   //  });
    beforeEach(() => {
     wrapperSlide = mount(
-      <Slideshow dto={sampleImage} large={false} galleryWidth={galleryWidth} galleryHeight={galleryHeight}/>,
+      <Slideshow dto={sampleImage} large={true} galleryWidth={galleryWidth} galleryHeight={galleryHeight} imageIndexInImages={3}/>,
       {attachTo: document.createElement('div')}
     );
   });
@@ -55,7 +60,15 @@ describe('Slideshow', () => {
     expect(768 / 1024).to.eq(wrapperSlide.state().slideHeight / wrapperSlide.state().slideWidth);
   });
 
-  
+  it('render 3 icons on Slideshow', () => {
+    wrapperSlide = mountSlideshow();
+    expect(wrapperSlide.find('.image-icon').length).to.equal(3);
+  });
+
+    it('render 2 icons on first Slideshow', () => {
+    wrapperSlide = mountFirstSlideshow();
+    expect(wrapperSlide.find('.image-icon').length).to.equal(2);
+  });
 // it('gets sizes for the image', done => {// why does it say undefined to equal 'test4'? test4 is in the app.js test ...cant find explanation
 //     // moxios.install();
 //     // moxios.wait(() => {

@@ -31,7 +31,7 @@ class Image extends React.Component {
         this.setState({
       rotate: rotateEdit
     });
-       }
+   }
 
   render() {
     return (

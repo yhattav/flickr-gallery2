@@ -64,7 +64,7 @@ describe('Gallery', () => {
     });
   });
 
-  it('renders a Backtop icon correctly', () => {
+  it('renders a Backtop correctly', () => {
     expect(wrapper.find('Backtop').length).to.eq(1);
   });
 

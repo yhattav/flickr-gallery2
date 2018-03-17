@@ -79,16 +79,17 @@ class Backtop extends React.Component {
 
     this.state = {
         intervalId: 0
-    };
+	};
+	//this.handleTopClick = this.handleTopClick.bind(this);
   }
 
-	handleTopClick() {
+	handleTopClick(){
 		smoothScroll.scrollTo('top');
 	}
   
   render () {
-      return <div title='Back to top' className='scroll'
-               onClick={ () => { this.handleTopClick(); }}>
+      return <div title='Back to top' className='scroll' 
+	  			onClick={ () =>  this.handleTopClick() }>
                   <FontAwesome className="arrow-up" name="chevron-up" title="Back to Top"/>
               </div>;
    }
