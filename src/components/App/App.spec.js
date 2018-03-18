@@ -39,8 +39,9 @@ describe('App', () => {
     wrapper.setState({
       tag: 'test4'
     }, () => {
-      setTimeout(() => {expect(wrapper.find('input').prop('value')).to.eq('test4');}, 700);
+      setTimeout(() => {expect(wrapper.find('input').prop('value')).to.eq('test4');}, 800);
       done();
     });
   });
+  
 });

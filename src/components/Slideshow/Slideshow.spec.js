@@ -1,17 +1,17 @@
 // import 'jsdom-global/register';
 import React from 'react';
 import {mount, shallow} from 'enzyme';
-import moxios from 'moxios';
-import sinon from 'sinon';
+//import moxios from 'moxios';
+//import sinon from 'sinon';
 import {expect} from 'chai';
 import Slideshow from './Slideshow.js';
 
 describe('Slideshow', () => {
 
   const sampleSizes = [
-    {label: "Square", width:"75", height: "75", source: "http://farm2.staticflickr.com/1103/567229075_2cf8456f01_s.jpg", url: "http://www.flickr.com/photos/stewart/567229075/sizes/sq/", media: "photo"},
-    {label:"Medium", width:"500", height:"375", source:"http://farm2.staticflickr.com/1103/567229075_2cf8456f01.jpg", url:"http://www.flickr.com/photos/stewart/567229075/sizes/m/", media:"photo"},
-    {label:"Large", width:"1024", height:"768", source:"http://farm2.staticflickr.com/1103/567229075_2cf8456f01_b.jpg", url:"http://www.flickr.com/photos/stewart/567229075/sizes/l/", media:"photo"},
+    {label: 'Square', width:75, height: 75, source: 'http://farm2.staticflickr.com/1103/567229075_2cf8456f01_s.jpg', url: 'http://www.flickr.com/photos/stewart/567229075/sizes/sq/', media: 'photo'},
+    {label:'Medium', width:500, height:375, source: 'http://farm2.staticflickr.com/1103/567229075_2cf8456f01.jpg', url: 'http://www.flickr.com/photos/stewart/567229075/sizes/m/', media:'photo'},
+    {label:'Large', width:1024, height:768, source: 'http://farm2.staticflickr.com/1103/567229075_2cf8456f01_b.jpg', url: 'http://www.flickr.com/photos/stewart/567229075/sizes/l/', media:'photo'}
   ];
 
   const sampleImage = {id: '567229075', owner: '59717246@N05', secret: '2cf8456f01', server: '1103', farm: 2};
@@ -55,7 +55,7 @@ describe('Slideshow', () => {
   it('keeps the aspect ratio of images like in the original(largest) even when the window ratio is different', () => {
     wrapperSlide = mountSlideshow();
     wrapperSlide.state().sizes = sampleSizes;
-    var url = wrapperSlide.instance().urlFromSizes();
+    //var url = wrapperSlide.instance().urlFromSizes();
     wrapperSlide.instance().calcSlideSize(sampleSizes);
     expect(768 / 1024).to.eq(wrapperSlide.state().slideHeight / wrapperSlide.state().slideWidth);
   });
@@ -65,7 +65,7 @@ describe('Slideshow', () => {
     expect(wrapperSlide.find('.image-icon').length).to.equal(3);
   });
 
-    it('render 2 icons on first Slideshow', () => {
+    it('render only 2 icons on first Slideshow', () => {
     wrapperSlide = mountFirstSlideshow();
     expect(wrapperSlide.find('.image-icon').length).to.equal(2);
   });
@@ -82,7 +82,7 @@ describe('Slideshow', () => {
 //     //     }
 //     //   }).then(() => {
 //     //     //console.log(sampleSizes.length)
-//     //     //expect(wrapperSlide.state().sizes.length); 
+//     //     //expect(wrapperSlide.state().sizes.length);
 //     //     //done();
 //     //     moxios.uninstall();
 //     //   });

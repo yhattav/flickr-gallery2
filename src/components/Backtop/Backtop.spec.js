@@ -1,7 +1,7 @@
 // import 'jsdom-global/register';
 import React from 'react';
 import {shallow} from 'enzyme';
-import sinon from 'sinon';
+//import sinon from 'sinon';
 import {expect} from 'chai';
 import Backtop from './Backtop.js';
 

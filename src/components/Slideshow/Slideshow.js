@@ -58,7 +58,7 @@ class Slideshow extends React.Component {
       }
       this.setState({
         slideWidth,
-        slideHeight,
+        slideHeight
       });
 }
 

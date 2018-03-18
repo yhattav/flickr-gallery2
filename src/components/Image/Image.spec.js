@@ -3,7 +3,7 @@ import {shallow} from 'enzyme';
 import sinon from 'sinon';
 import {expect} from 'chai';
 import Image from './Image.js';
-import Gallery from '../Gallery/Gallery.js';
+//import Gallery from '../Gallery/Gallery.js';
 
 describe('Image', () => {
 
@@ -14,12 +14,12 @@ describe('Image', () => {
 
   const mountImage = () => {
     return shallow(
-      <Image 
+      <Image
         dto={sampleImage}
         imageIndex='0'
         galleryWidth={galleryWidth}
-        deleteClick={(() => {var a;})}
-        largeClick={(() => {var a;})}
+        deleteClick={(() => {})}
+        largeClick={(() => {})}
         />,
       {lifecycleExperimental: true, attachTo: document.createElement('div')}
     );
@@ -55,9 +55,9 @@ describe('Image', () => {
   //    spy.restore();
   //  });
 
-    it("simulates click event for rotation", function() {
+    it('simulates click event for rotation', function() {
     const spy = sinon.spy(Image.prototype, 'rotate_Click');
-    wrapper.find(".rotateButton").simulate('click');
+    wrapper.find('.rotateButton').simulate('click');
     expect(spy.called).to.be.true;
     spy.restore();
   });
