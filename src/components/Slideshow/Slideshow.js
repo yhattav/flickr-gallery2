@@ -119,10 +119,10 @@ getSizes(dto) {
                 </div>
                 <div className="left-icons">
                   {this.props.imageIndexInImages > 0 &&
-                  <FontAwesome className="image-icon" name="chevron-left" title="Previous Image" onClick={() => this.props.arrowClick(this.props.imageIndex,-1)}/>}
+                  <FontAwesome className="image-icon" name="chevron-left" title = {'Previous image: ' + (this.props.imageIndexInImages-1) + '/' + this.props.galleryLength } onClick={() => this.props.arrowClick(this.props.imageIndex,-1)}/>}
                 </div>
                 <div className="right-icons">
-                  <FontAwesome className="image-icon" name="chevron-right" title="Next Image" onClick={() => this.props.arrowClick(this.props.imageIndex,1)}/>
+                  <FontAwesome className="image-icon" name="chevron-right" title={'Next Image: ' + (this.props.imageIndexInImages+1) + '/' + this.props.galleryLength } onClick={() => this.props.arrowClick(this.props.imageIndex,1)}/>
                 </div>
           </div>
         </div>

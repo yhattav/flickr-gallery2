@@ -179,6 +179,7 @@ handleResize() {
         if(dto.large)
          return <Slideshow
           imageIndexInImages={index}
+          galleryLength={this.state.images.length}
           imageIndex={dto.id}
           large={dto.large}
           arrowClick={this.arrow_Click}
